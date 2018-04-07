@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lista de la compra</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="empty_list">Lista vacía</string>
+</resources>

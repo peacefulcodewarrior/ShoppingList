@@ -1,16 +1,20 @@
 package noralba.tech.shopping.view
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.create_dialog.*
+import kotlinx.android.synthetic.main.create_dialog.view.*
 import noralba.tech.shopping.R
 import noralba.tech.shopping.domain.model.ShoppingList
+import org.jetbrains.anko.*
+import org.jetbrains.anko.design.textInputLayout
 
 class MainActivity : AppCompatActivity(), MainPresenter.MainView {
     private val presenter: MainPresenter by lazy {
@@ -23,9 +27,16 @@ class MainActivity : AppCompatActivity(), MainPresenter.MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        fab.setOnClickListener {
+            alert {
+                title = getString(R.string.create_list_dialog_title)
+                val layout = layoutInflater.inflate(R.layout.create_dialog, null)
+                customView = layout
+                yesButton {
+                    toast(layout.nameInputText.text)
+                }
+                noButton {}
+            }.show()
         }
 
 

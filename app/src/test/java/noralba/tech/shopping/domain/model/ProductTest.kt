@@ -5,8 +5,6 @@ import org.hamcrest.core.IsEqual.equalTo
 import org.junit.Assert.assertThat
 import org.junit.Test
 import noralba.tech.shopping.domain.model.ShoppingList.ListItem
-import noralba.tech.shopping.domain.repository.ShoppingListRepository
-import noralba.tech.shopping.domain.repository.Store
 
 /**
  * TODO add description

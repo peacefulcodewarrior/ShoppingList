@@ -1,5 +1,7 @@
 package noralba.tech.shopping.domain.repository
 
+import noralba.tech.shopping.domain.model.ShoppingList
+
 /**
  * TODO add description
  *
@@ -8,5 +10,5 @@ package noralba.tech.shopping.domain.repository
  */
 interface Store<T> {
     fun getAll(): List<T>
-
+    fun create(name: String): ShoppingList?
 }

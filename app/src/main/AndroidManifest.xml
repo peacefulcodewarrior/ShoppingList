@@ -20,7 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="noralba.tech.listadelacompra.EditShoppingList">
+        <activity
+            android:name=".view.ShoppingListDetailActivity"
+            android:label="@string/title_activity_shopping_list_detail"
+            android:parentActivityName=".view.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="noralba.tech.shopping.view.MainActivity"/>
         </activity>
     </application>
 

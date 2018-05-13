@@ -9,15 +9,13 @@ import noralba.tech.shopping.domain.repository.ShoppingListRepository
  * @author Santiago Cañada
  * Created on 30/03/18.
  */
-class GetAllShoppingListUseCase(
-        private val successListener: ((result: List<ShoppingList>) -> Unit)? = null,
-        private val failureListener: ((result: Error) -> Unit)? = null)
-    : Runnable {
+class GetAllShoppingListUseCase(private val repository: ShoppingListRepository) {
 
-    override fun run() {
-        println("Running")
+    fun execute(successListener: ((result: List<ShoppingList>) -> Unit)? = null,
+                failureListener: ((result: Error) -> Unit)? = null) {
         try {
-            successListener?.invoke(ShoppingListRepository.getAllShoppingLists())
+            val list = repository.getAllShoppingLists()
+            successListener?.invoke(list)
         } catch (t: Throwable) {
             failureListener?.invoke(Error.IOError)
         }

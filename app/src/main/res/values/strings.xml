@@ -5,4 +5,10 @@
     <string name="new_list_name_hint">Nombre de la lista</string>
     <string name="create_list_dialog_title">Nueva lista</string>
     <string name="title_activity_shopping_list_detail">Productos</string>
+    <string name="product_name_hint">Nuevo producto</string>
+    <string name="create_list_item_dialog_title">Nuevo producto</string>
+    <string name="product_quantity_hint">000</string>
+    <string name="product_price_hint">000.00</string>
+    <string name="quantity_label">Cantidad:</string>
+    <string name="price_label">Precio</string>
 </resources>

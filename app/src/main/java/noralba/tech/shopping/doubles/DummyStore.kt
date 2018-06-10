@@ -1,7 +1,12 @@
 package noralba.tech.shopping.doubles
 
 import noralba.tech.shopping.domain.model.ShoppingList
+import noralba.tech.shopping.domain.repository.Result
+import noralba.tech.shopping.domain.repository.ShoppingListError
+import noralba.tech.shopping.domain.repository.ShoppingListStore
 import noralba.tech.shopping.domain.repository.Store
+import java.io.IOError
+import java.util.Arrays.asList
 
 /**
  * TODO add description
@@ -9,16 +14,24 @@ import noralba.tech.shopping.domain.repository.Store
  * @author Santiago Cañada
  * Created on 30/03/18.
  */
-class DummyStore:Store<ShoppingList> {
-    val data = mutableListOf(ShoppingList("lista primera"), ShoppingList("Lista segunda"), ShoppingList("Lista tercera"), ShoppingList("Lista cuarta"), ShoppingList("Lista quinta"), ShoppingList("Lista sexta"), ShoppingList("Lista sépima"), ShoppingList("Lista octava"), ShoppingList("Lista novena"))
+class DummyStore:ShoppingListStore {
+    val data = mutableMapOf<String, ShoppingList>()
 
-    override fun getAll(): List<ShoppingList> = data.toList()
+    override fun getAll(): Result<ShoppingListError, List<ShoppingList>> = Result(null,data.values.toList())
 
-    override fun create(name: String): ShoppingList? {
-        val list = ShoppingList(name)
-        val added = data.add(list)
+    override fun create(name: String): Result<ShoppingListError,ShoppingList> {
+        data.put(name, ShoppingList(name))
 
-        return if (added) list else null
+        return getShoppingList(name)
+    }
+
+    override fun getShoppingList(name: String): Result<ShoppingListError, ShoppingList> {
+        val list = data[name]
+
+        if (list == null) {
+            return Result(ShoppingListError.IOError, null)
+        }
+        return Result(null, list)
     }
 
 }

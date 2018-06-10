@@ -9,9 +9,16 @@ import noralba.tech.shopping.domain.model.ShoppingList
  * Created on 29/03/18.
  */
 
-class ShoppingListRepositoryImpl(private val store: Store<ShoppingList>) : ShoppingListRepository {
-
+class ShoppingListRepositoryImpl(private val store: ShoppingListStore) : ShoppingListRepository {
     override fun getAllShoppingLists() = store.getAll()
 
-    override fun createShoppingList(name: String): ShoppingList? = store.create(name)
+    override fun createShoppingList(name: String): Result<ShoppingListError, ShoppingList> {
+        return if (name.isBlank()) {
+            Result(ShoppingListError.WrongInput, null)
+        } else {
+            store.create(name)
+        }
+    }
+
+    override fun getShoppingList(name: String): Result<ShoppingListError, ShoppingList> = store.getShoppingList(name)
 }

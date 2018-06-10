@@ -1,4 +1,4 @@
-package noralba.tech.shopping.domain.usecase
+package noralba.tech.shopping.domain.repository
 
 /**
  * TODO add description
@@ -6,6 +6,6 @@ package noralba.tech.shopping.domain.usecase
  * @author Santiago Cañada
  * Created on 30/03/18.
  */
-class Result<Failure, Success>(val error:Failure?, val success:Success?) {
+class Result<Failure, Data>(val error:Failure?, val data:Data?) {
     fun isSuccess()= error == null
 }

@@ -15,10 +15,10 @@ import java.util.*
  * @author Santiago Cañada
  * Created on 30/03/18.
  */
-class ShoppingListAdapter(var items: ShoppingList) : RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>() {
+class ShoppingListListAdapter(var items: List<ShoppingList>) : RecyclerView.Adapter<ShoppingListListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.txtName?.text = items[position].product.name
-        holder.txtInfo?.text = items[position].product.description
+        holder.txtName?.text = items[position].name
+        holder.txtInfo?.text = Date(items[position].created).toString()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

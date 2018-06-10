@@ -1,6 +1,7 @@
 package noralba.tech.shopping.domain.usecase
 
 import noralba.tech.shopping.domain.model.ShoppingList
+import noralba.tech.shopping.domain.repository.ShoppingListError
 import noralba.tech.shopping.domain.repository.ShoppingListRepository
 
 /**
@@ -12,13 +13,14 @@ import noralba.tech.shopping.domain.repository.ShoppingListRepository
 class GetAllShoppingListUseCase(private val repository: ShoppingListRepository) {
 
     fun execute(successListener: ((result: List<ShoppingList>) -> Unit)? = null,
-                failureListener: ((result: Error) -> Unit)? = null) {
-        try {
-            val list = repository.getAllShoppingLists()
-            successListener?.invoke(list)
-        } catch (t: Throwable) {
-            failureListener?.invoke(Error.IOError)
+                failureListener: ((result: ShoppingListError) -> Unit)? = null) {
+
+        val result = repository.getAllShoppingLists()
+        if (result.isSuccess()) {
+            successListener?.invoke(result.data!!)
+            return
         }
+        failureListener?.invoke(result.error!!)
     }
 
 }

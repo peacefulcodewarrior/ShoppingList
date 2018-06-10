@@ -2,6 +2,7 @@ package noralba.tech.shopping.resolvers
 
 import noralba.tech.shopping.domain.usecase.CreateShoppingListUseCase
 import noralba.tech.shopping.domain.usecase.GetAllShoppingListUseCase
+import noralba.tech.shopping.domain.usecase.GetShoppingListUseCase
 
 /**
  * TODO add description
@@ -16,5 +17,9 @@ object UseCaseResolver {
 
     fun resolveGetAllShoppingListUseCase() : GetAllShoppingListUseCase {
         return GetAllShoppingListUseCase(RepositoryResolver.shoppingListRepository)
+    }
+
+    fun resolveGetShoppingListUseCase(): GetShoppingListUseCase {
+        return GetShoppingListUseCase(RepositoryResolver.shoppingListRepository)
     }
 }

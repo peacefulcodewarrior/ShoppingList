@@ -25,7 +25,7 @@ class MainPresenter(private val getAllShoppingListUseCase: GetAllShoppingListUse
     private var lazyView: MainView? = null
 
     private val view: MainView by lazy {
-        val result = lazyView ?: throw IllegalStateException("store missing!")
+        val result = lazyView ?: throw IllegalStateException("MainView missing!")
         this.lazyView = null // clean ref
         result
     }

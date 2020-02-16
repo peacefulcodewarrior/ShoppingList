@@ -3,16 +3,14 @@ package noralba.tech.shopping.view
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.design.widget.Snackbar
+import com.google.android.material.snackbar.Snackbar
 import android.app.AlertDialog
-import android.content.Context
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -21,6 +19,7 @@ import kotlinx.android.synthetic.main.create_new_list_dialog.*
 import kotlinx.android.synthetic.main.create_new_list_dialog.view.*
 import noralba.tech.shopping.R
 import noralba.tech.shopping.domain.model.ShoppingList
+import noralba.tech.shopping.presenter.MainPresenter
 import noralba.tech.shopping.resolvers.PresenterResolver
 import noralba.tech.shopping.resolvers.ViewResolver
 import org.jetbrains.anko.*
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity(), MainPresenter.MainView {
         }
 
         recyclerList.adapter = adapter
-        recyclerList.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        recyclerList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, LinearLayout.VERTICAL, false)
     }
 
     private fun Button.configureEnableBehaviour(inputText: EditText) {

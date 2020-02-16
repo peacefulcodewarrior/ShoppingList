@@ -1,6 +1,6 @@
 package noralba.tech.shopping.view
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +15,7 @@ import java.util.*
  * @author Santiago Cañada
  * Created on 30/03/18.
  */
-class ShoppingListListAdapter(var items: List<ShoppingList>) : RecyclerView.Adapter<ShoppingListListAdapter.ViewHolder>() {
+class ShoppingListListAdapter(var items: List<ShoppingList>) : androidx.recyclerview.widget.RecyclerView.Adapter<ShoppingListListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.txtName?.text = items[position].name
         holder.txtInfo?.text = Date(items[position].created).toString()
@@ -30,7 +30,7 @@ class ShoppingListListAdapter(var items: List<ShoppingList>) : RecyclerView.Adap
         return items.size
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         val txtName = itemView.txtName
         val txtInfo = itemView.txtInfo
     }

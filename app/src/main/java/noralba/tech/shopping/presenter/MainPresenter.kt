@@ -1,4 +1,4 @@
-package noralba.tech.shopping.view
+package noralba.tech.shopping.presenter
 
 import noralba.tech.shopping.domain.model.ShoppingList
 import noralba.tech.shopping.domain.usecase.CreateShoppingListUseCase

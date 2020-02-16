@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.create_new_list_dialog.view.*
 import kotlinx.android.synthetic.main.create_new_list_item_dialog.view.*
 import noralba.tech.shopping.R
 import noralba.tech.shopping.domain.model.ShoppingList
+import noralba.tech.shopping.presenter.DetailPresenter
 import noralba.tech.shopping.resolvers.PresenterResolver
 import org.jetbrains.anko.*
 
@@ -49,12 +50,12 @@ class ShoppingListDetailActivity : AppCompatActivity(), DetailPresenter.DetailVi
 
         supportActionBar?.title = name
 
-        detailFab.setOnClickListener { view ->
+        detailFab.setOnClickListener {
             createNewItemAlertBuilder().show()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        recyclerListDetail.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        recyclerListDetail.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, LinearLayout.VERTICAL, false)
     }
 
     @SuppressLint("InflateParams")
@@ -115,8 +116,9 @@ class ShoppingListDetailActivity : AppCompatActivity(), DetailPresenter.DetailVi
             detailEmptyList.visibility = View.GONE
             recyclerListDetail.visibility = View.VISIBLE
 
-            recyclerListDetail.adapter = ShoppingListAdapter(list)
-            recyclerListDetail.adapter.notifyDataSetChanged()
+            val adapter = ShoppingListAdapter(list)
+            recyclerListDetail.adapter = adapter
+            adapter.notifyDataSetChanged()
         }
     }
 

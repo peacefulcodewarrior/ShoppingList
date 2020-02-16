@@ -1,7 +1,7 @@
 package noralba.tech.shopping.resolvers
 
-import noralba.tech.shopping.view.DetailPresenter
-import noralba.tech.shopping.view.MainPresenter
+import noralba.tech.shopping.presenter.DetailPresenter
+import noralba.tech.shopping.presenter.MainPresenter
 
 /**
  * TODO add description
